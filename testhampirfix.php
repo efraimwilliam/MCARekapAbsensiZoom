@@ -75,8 +75,8 @@ $dbname = "db_absensi";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sqlSelect = "SELECT * from tb_delapan";
-    $sqlSelect1 = "SELECT * from tb_limabelas";
+    $sqlSelect = "SELECT * from tb_delapan GROUP BY username";
+    $sqlSelect1 = "SELECT * from tb_limabelas GROUP BY username";
 
     $result = mysqli_query($conn, $sqlSelect);
     $result1 = mysqli_query($conn, $sqlSelect1);
@@ -268,7 +268,7 @@ if (!$mysqli->query("DROP PROCEDURE IF EXISTS get_username1") ||
     TRUNCATE TABLE tb_limabelas;
     INSERT INTO tb_limabelas (username, `time`, waktu)
     SELECT DISTINCT username, `day`, `durations` AS q FROM rekap
-    WHERE rekap.`durations` >=8 AND rekap.`durations` <=10;
+    WHERE rekap.`durations` >=15 AND rekap.`durations` <=18;
     
     END;')){
 
